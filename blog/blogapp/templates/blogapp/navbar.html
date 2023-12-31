@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple.css Navbar Example</title>
+
+    <!-- Include the Simple.css framework -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    
+    <style>
+        /* Custom styling for the navbar */
+        .custom-navbar {
+            background-color: #ffb300;
+            border-radius: 50px;
+            padding-left: 30px;
+            /* Set your desired background color */
+        }
+        .navbar-nav li{
+            display: inline-block;
+            margin-right: 10px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Simple.css navbar structure -->
+<nav class="navbar custom-navbar" style="margin-top: 30px;">
+    <div class="container">
+        <div class="navbar-header" style="display: inline-block;">
+            <a class="navbar-brand" href="{%url ''%}" style="color: wheat;"><b style="color: white;">Blogstop</b></a>
+        </div>
+        <div class="navbar-menu" style="display: inline-block;">
+
+            
+
+            <ul class="navbar-nav" style="list-style: none;">
+                {% if user.is_authenticated %}
+               
+                <li class="nav-item">
+                    <a href="{%url 'blog_index'%}" style="color: white;"><b>Feeds</b></a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" style="color: white;"><b>Logout</b></a>
+                </li>
+            </ul>
+
+                {%else%}
+
+                <li class="nav-item">
+                    <a href="{% url 'blog_index'%}" style="color: white;"><b>Feeds</b></a>
+                </li>
+                <li class="nav-item"><a href="{% url 'register' %}" style="color: white;"><b>Register</b></a></li>
+                <li class="nav-item"><a href="{% url 'login' %}" style="color: white;"><b>Login</b></a></li>
+
+                {%endif%}
+        </div>
+    </div>
+</nav>
+
+<!-- Your content goes here -->
+
+</body>
+</html>
